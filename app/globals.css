@@ -10,44 +10,44 @@
    ============================================================ */
 
 @theme {
-  /* ---------- PALETTE 2 — "Mauve & Champagne" (dark, luxe) ---------- */
-  --color-primary: #C9A26B;
-  /* Champagne gold — primary actions */
-  --color-primary-deep: #A8824D;
-  /* Deep gold — pressed/active */
-  --color-secondary: #E9DCEA;
-  /* Light mauve — light accents */
-  --color-secondary-deep: #C3A9C7;
-  /* Mauve — borders */
+  /* ---------- PALETTE — "Cyan on Cream" (light) ---------- */
+  --color-primary: #00C2FF;
+  /* Bright cyan — primary accents/highlights */
+  --color-primary-deep: #0091BF;
+  /* Deep cyan — buttons, pressed/active states */
+  --color-secondary: #D9F4FE;
+  /* Ice cyan — light accents, success tints */
+  --color-secondary-deep: #A6DEF0;
+  /* Powder cyan — borders on light */
 
-  --color-bg: #1E1620;
-  /* Aubergine-black — page background */
-  --color-bg-deep: #150F17;
-  /* recessed layer */
-  --color-surface: #2A1F2D;
+  --color-bg: #FBF7F5;
+  /* Warm cream — page background (kept) */
+  --color-bg-deep: #F2E9E6;
+  /* recessed layer (kept) */
+  --color-surface: #FFFFFF;
   /* raised cards / panels */
-  --color-surface-soft: #352739;
-  /* hover / inner chips */
+  --color-surface-soft: #EEF9FD;
+  /* hover / inner chips (cyan-tinted) */
 
-  --color-text: #EDE2EC;
-  /* soft mauve-white text */
-  --color-text-soft: #B79FB9;
-  /* muted text */
+  --color-text: #2B303B;
+  /* slate ink — primary text */
+  --color-text-soft: #6A7180;
+  /* muted slate text */
 
-  --color-line: rgba(233, 220, 234, 0.14);
-  --color-primary-soft: rgba(201, 162, 107, 0.18);
-  --color-secondary-soft: rgba(233, 220, 234, 0.10);
-  --color-danger-soft: rgba(168, 130, 77, 0.30);
+  --color-line: rgba(43, 48, 59, 0.12);
+  --color-primary-soft: rgba(0, 194, 255, 0.16);
+  --color-secondary-soft: rgba(0, 194, 255, 0.07);
+  --color-danger-soft: rgba(0, 145, 191, 0.22);
 
   --gradient-primary: linear-gradient(225deg, var(--color-primary), var(--color-primary-deep));
   --gradient-surface: linear-gradient(210deg, var(--color-surface), var(--color-bg-deep));
   --gradient-hero-glow: radial-gradient(circle, var(--color-primary-soft), transparent 65%);
   --gradient-secondary-glow: radial-gradient(circle, var(--color-secondary-soft), transparent 65%);
-  --gradient-cta-band: linear-gradient(225deg, var(--color-primary-deep), var(--color-primary) 55%, #E2C58C);
+  --gradient-cta-band: linear-gradient(225deg, var(--color-primary-deep), var(--color-primary) 55%, #66D9FF);
   --gradient-radial-warm: radial-gradient(circle at 50% 30%, var(--color-danger-soft), transparent 60%);
   --gradient-line-fade: linear-gradient(to left, var(--color-line), transparent);
   /* ---------- TYPOGRAPHY ---------- */
-  /* --font-vazirmatn is injected by next/font/local (see lib/fonts.ts),
+  /* --font-iran-sans is injected by next/font/local (see lib/fonts.ts),
      applied via the className on <html> in app/layout.tsx. */
   --font-sans: var(--font-iran-sans);
 

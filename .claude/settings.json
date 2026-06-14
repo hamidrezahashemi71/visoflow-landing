@@ -4,7 +4,11 @@
       "Bash(npx next *)",
       "Read(//c/Users/sarar/OneDrive/Desktop/ARCHITECH/landing/visoflow-landing/**)",
       "Bash(netstat -ano)",
-      "Bash(curl -s http://localhost:3000/)"
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(node -e ' *)",
+      "Bash(node -e *)",
+      "Bash(npx --no-install sharp-cli --version)",
+      "Bash(npx tsc *)"
     ]
   }
 }
