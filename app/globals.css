@@ -1,9 +1,356 @@
 @import "tailwindcss";
 
-@theme inline {
+
+/* ============================================================
+   VISO THEME TOKENS
+   Change ONLY the values in the palette block below to re-theme
+   the entire application. Every gradient, glow, border, and
+   shadow is derived from these names — nothing is hardcoded in
+   the components.
+   ============================================================ */
+
+@theme {
+  /* ---------- PALETTE 2 — "Mauve & Champagne" (dark, luxe) ---------- */
+  --color-primary: #C9A26B;
+  /* Champagne gold — primary actions */
+  --color-primary-deep: #A8824D;
+  /* Deep gold — pressed/active */
+  --color-secondary: #E9DCEA;
+  /* Light mauve — light accents */
+  --color-secondary-deep: #C3A9C7;
+  /* Mauve — borders */
+
+  --color-bg: #1E1620;
+  /* Aubergine-black — page background */
+  --color-bg-deep: #150F17;
+  /* recessed layer */
+  --color-surface: #2A1F2D;
+  /* raised cards / panels */
+  --color-surface-soft: #352739;
+  /* hover / inner chips */
+
+  --color-text: #EDE2EC;
+  /* soft mauve-white text */
+  --color-text-soft: #B79FB9;
+  /* muted text */
+
+  --color-line: rgba(233, 220, 234, 0.14);
+  --color-primary-soft: rgba(201, 162, 107, 0.18);
+  --color-secondary-soft: rgba(233, 220, 234, 0.10);
+  --color-danger-soft: rgba(168, 130, 77, 0.30);
+
+  --gradient-primary: linear-gradient(225deg, var(--color-primary), var(--color-primary-deep));
+  --gradient-surface: linear-gradient(210deg, var(--color-surface), var(--color-bg-deep));
+  --gradient-hero-glow: radial-gradient(circle, var(--color-primary-soft), transparent 65%);
+  --gradient-secondary-glow: radial-gradient(circle, var(--color-secondary-soft), transparent 65%);
+  --gradient-cta-band: linear-gradient(225deg, var(--color-primary-deep), var(--color-primary) 55%, #E2C58C);
+  --gradient-radial-warm: radial-gradient(circle at 50% 30%, var(--color-danger-soft), transparent 60%);
+  --gradient-line-fade: linear-gradient(to left, var(--color-line), transparent);
+  /* ---------- TYPOGRAPHY ---------- */
+  /* --font-vazirmatn is injected by next/font/local (see lib/fonts.ts),
+     applied via the className on <html> in app/layout.tsx. */
   --font-sans: var(--font-iran-sans);
+
+  /* ---------- RADII / SHADOWS (shadows tinted from palette) ---------- */
+  --radius-card: 20px;
+  --shadow-float: 0 30px 70px -28px rgba(0, 0, 0, 0.6);
+  --shadow-cta: 0 10px 28px var(--color-primary-soft);
+  --shadow-cta-hover: 0 16px 40px rgba(215, 38, 56, 0.4);
+  --shadow-glow-primary: 0 0 0 1px var(--color-primary-soft), 0 8px 30px -6px var(--color-primary-soft);
+  --shadow-drop: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
-  @apply font-sans;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-primary-soft);
+}
+
+/* nicer range sliders, themed */
+input[type="range"] {
+  accent-color: var(--color-primary);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+/* -- Signature: living appointment book -- */
+.badge-cycle-wrap {
+  display: grid;
+}
+
+.badge-cycle-wrap>* {
+  grid-area: 1 / 1;
+}
+
+.badge-cycle-sent {
+  animation: cycleA 9s infinite;
+}
+
+.badge-cycle-ok {
+  animation: cycleB 9s infinite;
+}
+
+.slot-lost {
+  animation: slotLost 9s infinite;
+}
+
+.badge-cycle-lost {
+  animation: cycleC 9s infinite;
+}
+
+.loss-tag {
+  opacity: 0;
+  animation: lossIn 9s infinite;
+}
+
+@keyframes cycleA {
+
+  0%,
+  38% {
+    opacity: 1;
+  }
+
+  44%,
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes cycleB {
+
+  0%,
+  38% {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  44%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cycleC {
+
+  0%,
+  55% {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+
+  62%,
+  96% {
+    background: var(--color-danger-soft);
+    color: var(--color-secondary);
+  }
+
+  100% {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+}
+
+@keyframes slotLost {
+
+  0%,
+  55% {
+    border-color: var(--color-line);
+    background: var(--color-surface);
+  }
+
+  62%,
+  96% {
+    border-color: var(--color-primary);
+    background: var(--color-danger-soft);
+  }
+
+  100% {
+    border-color: var(--color-line);
+  }
+}
+
+@keyframes lossIn {
+
+  0%,
+  58% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  66%,
+  94% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* -- Marquee ribbon -- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* -- Drifting ambient glow -- */
+.glow-drift {
+  animation: glowDrift 12s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translateY(0);
+    opacity: .6;
+  }
+
+  to {
+    transform: translateY(24px);
+    opacity: 1;
+  }
+}
+
+/* -- Scroll reveal -- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* -- Counting number pop -- */
+.pop {
+  animation: pop .4s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* -- Slow pulse for urgency dot -- */
+.pulse-dot {
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--color-primary-soft);
+  }
+
+  50% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+
+/* -- Shimmer for image placeholders -- */
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, var(--color-secondary-soft) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shimmer 2.6s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* -- Floating bob for decorative vectors -- */
+.bob {
+  animation: bob 6s ease-in-out infinite;
+}
+
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .badge-cycle-ok {
+    display: none;
+  }
+
+  .loss-tag {
+    opacity: 1;
+  }
+
+  .badge-cycle-lost {
+    background: var(--color-danger-soft) !important;
+    color: var(--color-secondary) !important;
+  }
 }
