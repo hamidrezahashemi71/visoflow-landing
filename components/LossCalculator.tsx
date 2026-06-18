@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { faDigits, faMoney } from "@/lib/format";
 import { QUIZ_URL } from "@/lib/config";
+import { GlowCard } from "./ui/spotlight-card";
 
 const NO_SHOW_RATE = 0.15;
 const WEEKS_PER_MONTH = 4.33;
@@ -15,6 +16,7 @@ export default function LossCalculator() {
   return (
     <section className="py-20 max-md:py-14">
       <div className="mx-auto max-w-280 px-6">
+        <GlowCard customSize glowColor="blue" className="block rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
         <div className="overflow-hidden rounded-[28px] border border-line bg-(--gradient-surface)">
           <div className="grid items-stretch max-md:grid-cols-1 md:grid-cols-[1fr_1.1fr]">
             <div className="p-9 max-md:p-7">
@@ -71,6 +73,7 @@ export default function LossCalculator() {
             </div>
           </div>
         </div>
+        </GlowCard>
       </div>
     </section>
   );

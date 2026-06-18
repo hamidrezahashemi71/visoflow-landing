@@ -9,7 +9,8 @@
       "Bash(node -e *)",
       "Bash(npx --no-install sharp-cli --version)",
       "Bash(npx tsc *)",
-      "Bash(pnpm add *)"
+      "Bash(pnpm add *)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }

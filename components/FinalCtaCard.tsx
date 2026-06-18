@@ -1,6 +1,7 @@
 import { faDigits } from "@/lib/format";
 import LumiIntro from "./LumiIntro";
 import CtaButton from "./CtaButton";
+import { GlowCard } from "./ui/spotlight-card";
 
 /**
  * The CTA band itself — shared by the on-page <FinalCta> section and the
@@ -8,6 +9,7 @@ import CtaButton from "./CtaButton";
  */
 export default function FinalCtaCard() {
   return (
+    <GlowCard customSize glowColor="blue" className="block rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
     <div className="relative overflow-hidden rounded-[28px] bg-(--gradient-cta-band) px-8 text-center after:absolute after:-bottom-30 after:-left-20 after:h-85 after:w-85 after:rounded-full after:bg-(--gradient-secondary-glow) after:content-['']">
       {/* Lumi greets the visitor and walks them into the survey */}
       <LumiIntro />
@@ -26,5 +28,6 @@ export default function FinalCtaCard() {
         ۳ دقیقه · رایگان · بدون ثبت‌نام · {faDigits(140)}+ مدیر تا امروز
       </div>
     </div>
+    </GlowCard>
   );
 }

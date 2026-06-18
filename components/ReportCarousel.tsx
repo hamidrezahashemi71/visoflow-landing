@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import SectionHead from "./SectionHead";
 import ImagePlaceholder from "./ImagePlaceholder";
+import { GlowCard } from "./ui/spotlight-card";
 
 function GaugeSlide() {
   const r = 80, c = Math.PI * r, filled = c * 0.72;
@@ -52,10 +53,10 @@ function ActionsSlide() {
     <div className="w-full max-w-sm">
       <div className="mb-4 text-center text-sm font-semibold text-text-soft">سه اقدام عملی — از همین هفته</div>
       {items.map((t, i) => (
-        <div key={t} className="mb-3 flex items-center gap-3 rounded-[14px] border border-line bg-bg-deep/70 px-4 py-3.5 text-sm">
+        <GlowCard key={t} customSize glowColor="blue" className="mb-3 flex items-center gap-3 bg-bg-deep/70! px-4 py-3.5 text-sm backdrop-blur-none">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-(--gradient-primary) text-base font-bold text-text">{["۱","۲","۳"][i]}</span>
           {t}
-        </div>
+        </GlowCard>
       ))}
       <div className="mx-auto mt-5 w-fit rounded-full bg-secondary-soft px-4 py-1 text-xs font-bold text-text-soft">رابط نرم‌افزاری ساده</div>
     </div>
@@ -97,7 +98,8 @@ export default function ReportCarousel() {
         <SectionHead kicker="در پایان ارزیابی چه می‌گیرید؟" title="نگاهی به داخل گزارش بیندازید"
           lead="گزارش شما همین شکل را دارد — اما با عددهای واقعیِ کسب‌وکار خودتان." />
 
-        <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[28px] border border-line bg-surface/60"
+        <GlowCard customSize glowColor="blue" className="mx-auto block max-w-3xl rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
+        <div className="relative overflow-hidden rounded-[28px] border border-line bg-surface/60"
           onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
           onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
           <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(${index * 100}%)` }}>
@@ -129,6 +131,7 @@ export default function ReportCarousel() {
             ))}
           </div>
         </div>
+        </GlowCard>
       </div>
     </section>
   );

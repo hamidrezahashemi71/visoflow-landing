@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import SectionHead from "./SectionHead";
+import { GlowCard } from "./ui/spotlight-card";
 
 const QA = [
   { q: "واقعاً فقط ۳ دقیقه طول می‌کشد؟", a: "بله. سؤال‌ها کوتاه و گزینه‌ای هستند و برای مدیر یک سالن طراحی شده‌اند، نه برای پر کردن فرم‌های طولانی." },
@@ -19,7 +20,8 @@ export default function Faq() {
           {QA.map((item, i) => {
             const active = open === i;
             return (
-              <div key={item.q} className="overflow-hidden rounded-2xl border border-line bg-surface/60">
+              <GlowCard key={item.q} customSize glowColor="blue" className="block p-0 backdrop-blur-none bg-transparent!">
+              <div className="overflow-hidden rounded-2xl bg-surface/60">
                 <button onClick={() => setOpen(active ? null : i)} aria-expanded={active}
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right text-[15px] font-bold text-text">
                   {item.q}
@@ -33,6 +35,7 @@ export default function Faq() {
                   </div>
                 </div>
               </div>
+              </GlowCard>
             );
           })}
         </div>
