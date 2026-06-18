@@ -58,7 +58,7 @@ export default function LumiIntro() {
       >
         <div
           ref={contentRef}
-          className="px-5 py-3 text-center text-[14.5px] font-semibold leading-[1.9] text-text"
+          className="px-5 py-3 text-center text-[14.5px] h-20 m-auto font-semibold leading-[1.9] text-text"
         >
           <span key={step} className="lumi-msg block">
             {STEPS[step].text}
