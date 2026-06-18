@@ -1,6 +1,7 @@
 import Divider from "@/components/Divider";
 import Faq from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
+import FinalCtaModal from "@/components/FinalCtaModal";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import LossCalculator from "@/components/LossCalculator";
@@ -31,6 +32,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyCta />
+      <FinalCtaModal />
     </>
   );
 }
