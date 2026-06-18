@@ -5,17 +5,27 @@ import ArrowIcon from "./ArrowIcon";
 
 /** Bottom-fixed CTA bar that slides in once the hero scrolls out of view. */
 export default function StickyCta() {
-  const [shown, setShown] = useState(false);
+  const [heroGone, setHeroGone] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+  const shown = heroGone && !footerVisible;
 
   useEffect(() => {
     const hero = document.querySelector("header");
-    if (!hero) return;
-    const io = new IntersectionObserver(
-      ([e]) => setShown(!e.isIntersecting),
-      { threshold: 0 }
-    );
-    io.observe(hero);
-    return () => io.disconnect();
+    const footer = document.querySelector("footer");
+
+    const heroIo = hero
+      ? new IntersectionObserver(([e]) => setHeroGone(!e.isIntersecting), { threshold: 0 })
+      : null;
+    const footerIo = footer
+      ? new IntersectionObserver(([e]) => setFooterVisible(e.isIntersecting), { threshold: 0 })
+      : null;
+
+    heroIo?.observe(hero!);
+    footerIo?.observe(footer!);
+    return () => {
+      heroIo?.disconnect();
+      footerIo?.disconnect();
+    };
   }, []);
 
   return (
