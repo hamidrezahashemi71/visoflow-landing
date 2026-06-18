@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { QUIZ_URL } from "@/lib/config";
-import ArrowIcon from "./ArrowIcon";
+import CtaButton from "./CtaButton";
 
 /** Bottom-fixed CTA bar that slides in once the hero scrolls out of view. */
 export default function StickyCta() {
@@ -43,13 +42,9 @@ export default function StickyCta() {
             در ۳ دقیقه گزارش اختصاصی بگیرید
           </span>
         </div>
-        <a
-          href={QUIZ_URL}
-          className="group inline-flex items-center gap-2.5 rounded-full bg-(--gradient-primary) px-7 py-3 text-[15.5px] font-bold text-text shadow-(--shadow-cta) transition-all duration-200 hover:-translate-y-0.5 hover:shadow-(--shadow-cta-hover) max-sm:w-full max-sm:justify-center"
-        >
+        <CtaButton size="xl" className="max-sm:w-full">
           شروع ارزیابی ۳ دقیقه‌ای
-          <ArrowIcon />
-        </a>
+        </CtaButton>
       </div>
     </div>
   );

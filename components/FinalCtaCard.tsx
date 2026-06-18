@@ -1,6 +1,6 @@
-import { QUIZ_URL } from "@/lib/config";
 import { faDigits } from "@/lib/format";
 import LumiIntro from "./LumiIntro";
+import CtaButton from "./CtaButton";
 
 /**
  * The CTA band itself — shared by the on-page <FinalCta> section and the
@@ -21,11 +21,7 @@ export default function FinalCtaCard() {
       <p className="relative z-1 mx-auto mb-8 max-w-[52ch] text-base text-text/85">
         سه دقیقه وقت بگذارید و ببینید نوبت‌های نیامده دقیقاً چقدر برای کسب‌وکار شما هزینه دارند — و با چه راهکارهایی می‌شود جلوی آن را گرفت.
       </p>
-      <a href={QUIZ_URL}
-        className="group relative z-1 inline-flex items-center gap-2.5 rounded-full bg-bg-deep px-8.5 py-3.75 text-[16.5px] font-bold text-text-soft shadow-(--shadow-drop) transition-all duration-200 hover:-translate-y-0.5 hover:bg-bg">
-        شروع ارزیابی رایگان
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:-translate-x-1"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
-      </a>
+      <CtaButton className="relative z-1">شروع ارزیابی رایگان</CtaButton>
       <div className="relative z-1 mt-4.5 text-[13px] font-medium text-text/75">
         ۳ دقیقه · رایگان · بدون ثبت‌نام · {faDigits(140)}+ مدیر تا امروز
       </div>

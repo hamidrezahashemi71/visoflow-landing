@@ -1,18 +1,37 @@
 import { QUIZ_URL } from "@/lib/config";
 import ArrowIcon from "./ArrowIcon";
+import { LiquidButton } from "./ui/liquid-glass-button";
 
-type Props = { children: React.ReactNode; variant?: "primary" | "ghost" };
+type Props = {
+  children: React.ReactNode;
+  /** xxl for the big in-page CTAs, xl for the compact sticky bar. */
+  size?: "xl" | "xxl";
+  /** Extra classes merged onto the outer wrapper (e.g. layering / full-width). */
+  className?: string;
+};
 
-export default function CtaButton({ children, variant = "primary" }: Props) {
-  const styles =
-    variant === "primary"
-      ? "bg-(--gradient-primary) text-text shadow-(--shadow-cta) hover:shadow-(--shadow-cta-hover)"
-      : "bg-bg-deep text-text-soft border border-secondary/30 hover:border-secondary hover:bg-bg";
+/**
+ * Primary call-to-action. A liquid-glass button wrapped in an animated
+ * "smoke" aura that drifts around it to pull the eye. Rendered as an
+ * <a href="#quiz"> so the timed FinalCtaModal can still cancel itself on
+ * click (it matches `a[href="#quiz"]`).
+ */
+export default function CtaButton({ children, size = "xxl", className = "" }: Props) {
   return (
-    <a href={QUIZ_URL}
-      className={`group inline-flex items-center gap-2.5 rounded-full px-8.5 py-3.75 text-[16.5px] font-bold transition-all duration-200 hover:-translate-y-0.5 ${styles}`}>
-      {children}
-      <ArrowIcon />
-    </a>
+    <span className={`cta-aura-wrap relative isolate inline-flex ${className}`}>
+      <span aria-hidden className="cta-aura" />
+      <LiquidButton
+        asChild
+        size={size}
+        className="group relative z-1 w-full text-[16.5px] font-bold text-primary-deep"
+      >
+        <a href={QUIZ_URL}>
+          <span className="relative z-10 inline-flex items-center justify-center gap-2.5">
+            {children}
+            <ArrowIcon />
+          </span>
+        </a>
+      </LiquidButton>
+    </span>
   );
 }
