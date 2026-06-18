@@ -14,7 +14,7 @@ const SOURCES: Record<LogoVariant, StaticImageData> = {
 
 /** Rendered height in px per variant; width scales to keep the source aspect ratio. */
 const HEIGHTS: Record<LogoVariant, { default: number; small: number }> = {
-  lockup: { default: 80, small: 60 },
+  lockup: { default: 120, small: 60 },
   logomark: { default: 32, small: 26 },
   wordmark: { default: 24, small: 20 },
 };
