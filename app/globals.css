@@ -294,6 +294,53 @@ input[type="range"] {
   }
 }
 
+/* -- Lumi intro speech bubble (final CTA) -- */
+.lumi-bubble {
+  opacity: 0;
+  transform: scale(0.82) translateY(10px);
+  transform-origin: bottom center;
+  transition:
+    opacity .45s ease,
+    transform .55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height .4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lumi-bubble[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Little tail, animated in alongside the bubble */
+.lumi-tail {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.5);
+  transition:
+    opacity .45s ease .08s,
+    transform .5s cubic-bezier(0.34, 1.56, 0.64, 1) .08s;
+}
+
+.lumi-tail[data-in="true"] {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+/* Each new line rises in as Lumi changes expression */
+.lumi-msg {
+  animation: lumiMsgIn .45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes lumiMsgIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* -- Shimmer for image placeholders -- */
 .shimmer::after {
   content: "";
