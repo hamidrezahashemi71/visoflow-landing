@@ -354,3 +354,45 @@ input[type="range"] {
     color: var(--color-secondary) !important;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+ * ScrollReelTestimonials — word rise animation
+ * -------------------------------------------------------------------------- */
+
+/* Each word rises from 8px below with opacity 0 → 1 */
+.scroll-reel-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: scroll-reel-word-rise 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Applied to the outgoing text block so in-flight word rises are killed */
+.scroll-reel-exit {
+  animation: scroll-reel-exit 240ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Kill word animations on the exiting block */
+.scroll-reel-exit .scroll-reel-word {
+  animation: none;
+}
+
+@keyframes scroll-reel-word-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-reel-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}

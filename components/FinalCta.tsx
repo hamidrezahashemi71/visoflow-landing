@@ -1,11 +1,16 @@
 import { QUIZ_URL } from "@/lib/config";
 import { faDigits } from "@/lib/format";
+import LazyLumi from "./LazyLumi";
 
 export default function FinalCta() {
   return (
     <section id="quiz" className="py-20 max-md:py-14">
       <div className="mx-auto max-w-280 px-6">
-        <div className="relative overflow-hidden rounded-[28px] bg-(--gradient-cta-band) px-8 py-18 text-center after:absolute after:-bottom-30 after:-left-20 after:h-85 after:w-85 after:rounded-full after:bg-(--gradient-secondary-glow) after:content-['']">
+        <div className="relative overflow-hidden rounded-[28px] bg-(--gradient-cta-band) px-8  text-center after:absolute after:-bottom-30 after:-left-20 after:h-85 after:w-85 after:rounded-full after:bg-(--gradient-secondary-glow) after:content-['']">
+          {/* Lumi celebrates the payoff above the final CTA */}
+          <div className="relative z-1 mb-4 flex justify-center">
+            <LazyLumi state="excited" width={180} />
+          </div>
           <span className="relative z-1 mb-5 inline-flex items-center gap-2 rounded-full bg-bg-deep/40 px-4 py-1.5 text-[13px] font-bold text-text-soft backdrop-blur-sm">
             <span className="pulse-dot h-1.75 w-1.75 rounded-full bg-secondary" />
             ظرفیت دسترسی زودهنگام محدود است
