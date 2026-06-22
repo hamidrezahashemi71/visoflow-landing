@@ -15,23 +15,26 @@
   /* Bright cyan — primary accents/highlights */
   --color-primary-deep: #a1e3f8;
   /* Deep cyan — buttons, pressed/active states */
-  --color-secondary: #D9F4FE;
+  --color-secondary: #9fe0f4;
   /* Ice cyan — light accents, success tints */
   --color-secondary-deep: #A6DEF0;
   /* Powder cyan — borders on light */
 
   --color-bg: #f8f8f8;
   /* Warm cream — page background (kept) */
-  --color-bg-deep: #F2E9E6;
+  --color-bg-deep: #fefefe;
   /* recessed layer (kept) */
   --color-surface: #f4f4f4;
   /* raised cards / panels */
   --color-surface-soft: #EEF9FD;
   /* hover / inner chips (cyan-tinted) */
 
+  --color-success: #10c744;
+  --color-danger: #e30e46;
+
   --color-text: #22262f;
   /* slate ink — primary text */
-  --color-text-soft: #6A7180;
+  --color-text-soft: #535353;
   /* muted slate text */
 
   --color-line: rgba(43, 48, 59, 0.12);
@@ -425,11 +428,6 @@ input[type="range"] {
 
   .loss-tag {
     opacity: 1;
-  }
-
-  .badge-cycle-lost {
-    background: var(--color-danger-soft) !important;
-    color: var(--color-secondary) !important;
   }
 }
 

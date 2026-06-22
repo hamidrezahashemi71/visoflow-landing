@@ -1,14 +1,21 @@
+import Image from "next/image";
 import AppointmentBook from "./AppointmentBook";
 import CtaButton from "./CtaButton";
 import { faDigits } from "@/lib/format";
 
 export default function Hero() {
   return (
-    <header className="relative overflow-hidden py-18 pb-20">
-      <div className="glow-drift pointer-events-none absolute -top-32 -left-32 h-120 w-120 rounded-full bg-(--gradient-hero-glow)" />
-      <div className="pointer-events-none absolute -right-40 top-1/3 h-105 w-105 rounded-full bg-(--gradient-secondary-glow)" />
+    <header className="relative overflow-hidden pt-2 py-16">
+      <Image
+        src="/assets/images/hero-lady-image.png"
+        alt=""
+        aria-hidden="true"
+        width={442}
+        height={656}
+        className="pointer-events-none select-none absolute bottom-0 left-2 z-20 h-70 w-auto object-contain object-bottom md:left-4 md:h-80 xl:left-6 xl:z-100 xl:h-160"
+      />
 
-      <div className="relative mx-auto grid max-w-280 items-center gap-14 px-6 max-md:grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid max-w-300 items-center gap-14 px-6 max-md:grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
         <div className="min-w-0">
           <span className="mb-5.5 inline-flex items-center gap-2 rounded-lg border border-secondary/25 bg-primary/15 px-4 py-1.5 text-[13.5px] font-semibold text-primary">
             <span className="pulse-dot h-1.75 w-1.75 rounded-full bg-primary" />
@@ -38,9 +45,9 @@ export default function Hero() {
 
           {/* Social proof row — avatars + live count */}
           <div className="mt-8 flex items-center gap-3 border-t border-line pt-6">
-            <div className="flex -space-x-4 space-x-reverse">
+            <div className="flex -space-x-3 ">
               {[0, 1, 2, 3].map((i) => (
-                <span key={i} className="grid h-9 w-9 place-items-center rounded-full border-2 border-bg bg-surface-soft text-xs font-bold text-text-soft">
+                <span key={i} className={`grid h-9 w-9 place-items-center rounded-full border-2 text-bg border-bg text-xs font-bold ${i === 3 ? "bg-primary" : "bg-secondary"}`}>
                   {["م", "س", "ز", "ر"][i]}
                 </span>
               ))}

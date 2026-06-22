@@ -1,28 +1,29 @@
 type Slot = { time: string; name: string; service: string };
-const SLOTS: { a: Slot; b: Slot; c: Slot } = {
+const SLOTS: { a: Slot; b: Slot; c: Slot; d: Slot } = {
   a: { time: "۱۰:۳۰", name: "مریم رضایی", service: "لیزر موهای زائد" },
   b: { time: "۱۲:۰۰", name: "سارا احمدی", service: "فیشیال تخصصی" },
   c: { time: "۱۵:۳۰", name: "الهام محمدی", service: "تزریق ژل" },
+  d: { time: "17:00", name: "مینا حیدری", service: "مشاوره تخصصی" },
 };
 
 function Time({ children }: { children: React.ReactNode }) {
   return <span className="min-w-12 rounded-[10px] bg-primary-soft px-0.5 py-1.5 text-center text-sm font-bold text-primary">{children}</span>;
 }
 
-const slotBase = "mb-3 flex flex-col gap-2.5 rounded-[14px] border border-line bg-surface p-3.5";
-const badgeBase = "self-start rounded-full px-3 py-1.25 text-[11.5px] font-bold whitespace-nowrap transition-all duration-300";
+const slotBase = "mb-3 flex flex-col gap-2.5 rounded-lg bg-bg p-2";
+const badgeBase = "self-start rounded-lg px-3 py-1.25 text-[11.5px] font-bold whitespace-nowrap transition-all duration-300";
 
 export default function AppointmentBook() {
   return (
     <div aria-label="نمایش نمادین دفتر نوبت یک سالن"
-      className="relative rounded-3xl border border-line bg-bg-deep/80 p-6 shadow-(--shadow-float) backdrop-blur-sm before:absolute before:top-0 before:right-7 before:left-7 before:h-1 before:rounded-b before:[background:repeating-linear-gradient(90deg,var(--color-line)_0_14px,transparent_14px_28px)]">
+      className="relative rounded-3xl border border-line bg-bg-deep p-6 backdrop-blur-sm">
       <div className="mb-4.5 flex items-center justify-between">
         <span className="text-[15.5px] font-bold text-text-soft">نوبت‌های امروز</span>
-        <span className="rounded-full bg-surface px-3 py-1 text-[12.5px] text-text-soft">سه‌شنبه · ۲۲ خرداد</span>
+        <span className="text-[12.5px] text-text-soft">سه‌شنبه | ۲۲ خرداد</span>
       </div>
 
       <div className={slotBase}>
-        <div className="flex items-center gap-3.5">
+        <div className="flex items-start gap-3.5">
           <Time>{SLOTS.a.time}</Time>
           <span className="min-w-0 flex-1">
             <b className="block text-sm font-semibold">{SLOTS.a.name}</b>
@@ -32,12 +33,12 @@ export default function AppointmentBook() {
         </div>
         <span className="badge-cycle-wrap self-start">
           <span className={`${badgeBase} badge-cycle-sent bg-primary-soft text-primary`}>پیامک یادآوری ارسال شد</span>
-          <span className={`${badgeBase} badge-cycle-ok bg-secondary-soft text-text-soft w-fit`}>✓ تأیید کرد</span>
+          <span className={`${badgeBase} badge-cycle-ok bg-success/10 text-success w-fit`}>نوبت تایید شد</span>
         </span>
       </div>
 
       <div className={slotBase}>
-        <div className="flex items-center gap-3.5">
+        <div className="flex items-start gap-3.5">
           <Time>{SLOTS.b.time}</Time>
           <span className="min-w-0 flex-1">
             <b className="block text-sm font-semibold">{SLOTS.b.name}</b>
@@ -45,24 +46,36 @@ export default function AppointmentBook() {
             <span className="invisible block text-xs">&nbsp;</span>
           </span>
         </div>
-        <span className={`${badgeBase} badge-cycle-wrap bg-secondary-soft text-text-soft`}>✓ تأیید کرد</span>
+        <span className={`${badgeBase} badge-cycle-wrap bg-success/10 text-success w-fit`}>نوبت تایید شد</span>
       </div>
 
-      <div className={`${slotBase} slot-lost`}>
-        <div className="flex items-center gap-3.5">
+      <div className={`${slotBase} `}>
+        <div className="flex items-start gap-3.5">
           <Time>{SLOTS.c.time}</Time>
           <span className="min-w-0 flex-1">
             <b className="block text-sm font-semibold">{SLOTS.c.name}</b>
             <span className="block text-xs text-text-soft">{SLOTS.c.service}</span>
-            <span className="loss-tag block text-xs font-bold text-primary">−۲٬۴۰۰٬۰۰۰ تومان از دست رفت</span>
+            <span className="loss-tag block text-xs font-bold text-danger mt-0.5">−۲٬۴۰۰٬۰۰۰ تومان از دست رفت</span>
           </span>
         </div>
-        <span className={`${badgeBase} badge-cycle-lost`}>بدون یادآوری · نیامد</span>
+        <span className={`${badgeBase} bg-text-soft/10 text-text-soft`}>بدون یادآوری · نیامد</span>
       </div>
 
-      <div className="mt-1.5 flex items-center justify-between rounded-[14px] bg-surface px-4 py-3">
-        <span className="text-[12.5px] text-text-soft">برآورد ضرر همین یک هفته از نوبت‌های نیامده</span>
-        <span className=" text-[26px] leading-none font-bold text-primary">؟</span>
+      <div className={slotBase}>
+        <div className="flex items-start gap-3.5">
+          <Time>{SLOTS.b.time}</Time>
+          <span className="min-w-0 flex-1">
+            <b className="block text-sm font-semibold">{SLOTS.d.name}</b>
+            <span className="block text-xs text-text-soft">{SLOTS.d.service}</span>
+            <span className="invisible block text-xs">&nbsp;</span>
+          </span>
+        </div>
+        <span className={`${badgeBase} badge-cycle-wrap bg-danger/10 text-danger w-fit`}>نوبت لغو شد</span>
+      </div>
+
+      <div className="mt-1.5 flex items-center gap-3 rounded-[14px] bg-surface px-4 py-3">
+        <span className="bg-text rounded-full w-4 h-4 flex items-center justify-center shrink-0 font-bold text-bg text-[9px]">!</span>
+        <span className="text-xs max-w-1/2 text-text-soft">برآورد ضرر همین یک هفته از نوبت‌های نیامده</span>
       </div>
     </div>
   );
