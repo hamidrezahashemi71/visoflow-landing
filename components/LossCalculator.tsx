@@ -1,11 +1,19 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { faDigits, faMoney } from "@/lib/format";
-import { QUIZ_URL } from "@/lib/config";
+import CtaButton from "./CtaButton";
+import WheelPicker from "./ui/WheelPicker";
 import { GlowCard } from "./ui/spotlight-card";
 
 const NO_SHOW_RATE = 0.15;
 const WEEKS_PER_MONTH = 4.33;
+
+const WEEKLY_OPTIONS = [20, 30, 40, 50, 60, 70, 80, 90, 100, 120, 150];
+const VALUE_OPTIONS = [
+  500_000, 1_000_000, 1_500_000, 2_000_000, 2_500_000,
+  3_000_000, 3_500_000, 4_000_000, 5_000_000,
+];
 
 export default function LossCalculator() {
   const [weekly, setWeekly] = useState(60);
@@ -15,65 +23,89 @@ export default function LossCalculator() {
 
   return (
     <section id="loss-calculator" className="py-20 max-md:py-14">
-      <div className="mx-auto max-w-280 px-6">
-        <GlowCard customSize glowColor="blue" className="block rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
-        <div className="overflow-hidden rounded-[28px] border border-line bg-(--gradient-surface)">
-          <div className="grid items-stretch max-md:grid-cols-1 md:grid-cols-[1fr_1.1fr]">
-            <div className="p-9 max-md:p-7">
-              <div className="mb-2 text-[13.5px] font-bold tracking-wide text-primary">حساب سرانگشتی — همین حالا</div>
-              <h2 className="mb-7 text-[clamp(28px,3.5vw,38px)] leading-[1.4] font-bold text-text">
-                ابعاد ضرر را ببینید
-              </h2>
-
-              <label className="mb-7 block">
-                <span className="mb-1 flex items-baseline justify-between text-sm">
-                  <span className="font-semibold text-text">نوبت‌ها در هفته</span>
-                  <span className="text-2xl font-bold text-text-soft">{faDigits(weekly)}</span>
-                </span>
-                <input type="range" min={20} max={400} step={5} value={weekly}
-                  onChange={(e) => setWeekly(Number(e.target.value))} className="w-full" aria-label="تعداد نوبت‌ها در هفته" />
-              </label>
-
-              <label className="mb-7 block">
-                <span className="mb-1 flex items-baseline justify-between text-sm">
-                  <span className="font-semibold text-text">میانگین ارزش هر نوبت</span>
-                  <span className="text-2xl font-bold text-text-soft">{faMoney(avgValue)} <span className="font-body text-sm text-text-soft">تومان</span></span>
-                </span>
-                <input type="range" min={300_000} max={10_000_000} step={100_000} value={avgValue}
-                  onChange={(e) => setAvgValue(Number(e.target.value))} className="w-full" aria-label="میانگین ارزش هر نوبت" />
-              </label>
-
-              <p className="text-[12.5px] leading-7 text-text-soft">
-                فرض این محاسبه: حدود {faDigits(15)}٪ نوبت‌ها بدون اطلاع لغو می‌شوند یا مشتری نمی‌آید —
-                رقم واقعیِ شما ممکن است کمتر یا بیشتر باشد. ارزیابی دقیقاً همین را مشخص می‌کند.
-              </p>
+      <div className="mx-auto w-full px-6">
+        <div className="grid items-center gap-x-10 gap-y-10 max-md:gap-8 grid-cols-1 md:grid-cols-[1fr_1fr]">
+          <GlowCard className="rounded-[28px] border border-line bg-bg-deep p-8 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.28)] max-md:p-6">
+            <div className="mb-6 text-center text-[clamp(18px,1.8vw,22px)] font-bold text-primary">
+              حساب سرانگشتی — همین الان
             </div>
 
-            <div className="relative flex flex-col items-center justify-center border-line bg-bg-deep/60 p-9 text-center max-md:border-t md:border-r">
-              <div className="pointer-events-none absolute inset-0 bg-(--gradient-radial-warm)" />
-              <div className="relative">
-                <div className="mb-2 text-sm font-semibold text-text-soft">برآورد ضرر ماهانه از نوبت‌های نیامده</div>
-                <div key={Math.round(monthlyLoss)} className="pop text-[clamp(44px,6vw,72px)] leading-none font-bold text-primary tabular-nums" aria-live="polite">
-                  {faMoney(monthlyLoss)}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <div className="mb-3 text-center text-[14.5px] font-bold text-text">
+                  تعداد نوبت‌ها در هفته
                 </div>
-                <div className="mt-1 text-sm text-text-soft">تومان در ماه</div>
-
-                <div className="mt-5 inline-block rounded-full bg-danger-soft px-4 py-1.5 text-[13px] font-bold text-text-soft">
-                  یعنی حدود {faMoney(yearly)} تومان در سال
-                </div>
-
-                <a href={QUIZ_URL}
-                  className="group mt-7 flex items-center justify-center gap-2 rounded-full border border-secondary/40 px-6 py-2.5 text-sm font-bold text-text-soft transition-all hover:border-secondary hover:bg-secondary-soft">
-                  عدد دقیقِ کسب‌وکار خودتان را بگیرید
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-x-1">
-                    <path d="M19 12H5M11 18l-6-6 6-6" />
-                  </svg>
-                </a>
+                <WheelPicker
+                  options={WEEKLY_OPTIONS}
+                  value={weekly}
+                  onChange={setWeekly}
+                  format={faDigits}
+                  label="تعداد نوبت‌ها در هفته"
+                />
               </div>
+              <div>
+                <div className="mb-3 text-center text-[14.5px] font-bold text-text">
+                  ارزش حدودی هر نوبت
+                </div>
+                <WheelPicker
+                  options={VALUE_OPTIONS}
+                  value={avgValue}
+                  onChange={setAvgValue}
+                  format={faMoney}
+                  label="ارزش حدودی هر نوبت"
+                />
+              </div>
+            </div>
+
+            <div className="mt-7 flex items-start gap-2.5 border-t border-line pt-5">
+              <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-primary pt-px text-[9px] font-bold leading-none text-bg">
+                i
+              </span>
+              <p className="text-[12px] leading-6 text-text-soft">
+                فرض این محاسبه: حدود {faDigits(15)}٪ نوبت‌ها بدون اطلاع لغو می‌شوند یا
+                مشتری نمی‌آید — رقم واقعیِ شما ممکن است کمتر یا بیشتر باشد. ارزیابی
+                دقیقاً همین را مشخص می‌کند.
+              </p>
+            </div>
+          </GlowCard>
+          <div className="relative">
+            <Image
+              src="/assets/images/calc-loss.png"
+              alt=""
+              aria-hidden="true"
+              width={250}
+              height={550}
+              className="absolute  md:-z-1 opacity-10 xl:opacity-100 pointer-events-none mx-auto mb-6 h-auto select-none object-contain xl:absolute xl:inset-y-0 xl:right-0 xl:m-0 hidden sm:block"
+            />
+
+            <div className="flex flex-col items-center text-center xl:items-end xl:pr-[clamp(210px,15vw,240px)]">
+              <h2 className="mb-6 text-[clamp(26px,3vw,34px)] font-bold leading-normal text-text">
+                برآورد ماهانه ضرر از نوبت‌های نیامده
+              </h2>
+              <div
+                key={Math.round(monthlyLoss)}
+                className="pop text-[clamp(48px,7vw,86px)] font-bold leading-[1.05] text-primary tabular-nums mx-auto"
+                aria-live="polite"
+              >
+                {faMoney(monthlyLoss)}
+              </div>
+              <div className="mt-2 text-[clamp(18px,2vw,24px)] font-bold text-primary mx-auto">
+                تومان در ماه
+              </div>
+              <p className="mt-6 text-[15px] text-text-soft mx-auto">
+                یعنی معادل{" "}
+                <b className="text-[clamp(18px,2vw,22px)] font-bold text-primary tabular-nums">
+                  {faMoney(yearly)}
+                </b>{" "}
+                تومان در سال
+              </p>
+              <CtaButton size="xxl" className="group mt-9 w-full justify-center max-md:max-w-sm">
+                عدد دقیق کسب‌وکار خود را بگیرید
+              </CtaButton>
             </div>
           </div>
         </div>
-        </GlowCard>
+
       </div>
     </section>
   );

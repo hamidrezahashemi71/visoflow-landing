@@ -1,3 +1,5 @@
+import { GlowCard } from "./ui/spotlight-card";
+
 type Slot = { time: string; name: string; service: string };
 const SLOTS: { a: Slot; b: Slot; c: Slot; d: Slot } = {
   a: { time: "۱۰:۳۰", name: "مریم رضایی", service: "لیزر موهای زائد" },
@@ -19,7 +21,7 @@ const badgeBase = "self-start rounded-lg px-3 py-1.25 text-[11.5px] font-bold wh
 
 export default function AppointmentBook() {
   return (
-    <div aria-label="نمایش نمادین دفتر نوبت یک سالن"
+    <GlowCard aria-label="نمایش نمادین دفتر نوبت یک سالن"
       className="relative rounded-3xl border border-line bg-bg-deep p-6 backdrop-blur-sm">
       <div className="mb-4.5 flex items-center justify-between">
         <span className="text-[15.5px] font-bold text-text-soft">نوبت‌های امروز</span>
@@ -81,6 +83,6 @@ export default function AppointmentBook() {
         <InfoBadge />
         <span className="text-xs max-w-1/2 text-text-soft">برآورد ضرر همین یک هفته از نوبت‌های نیامده</span>
       </div>
-    </div>
+    </GlowCard>
   );
 }
