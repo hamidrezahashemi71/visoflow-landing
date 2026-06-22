@@ -11,25 +11,25 @@
 
 @theme {
   /* ---------- PALETTE — "Cyan on Cream" (light) ---------- */
-  --color-primary: #00C2FF;
+  --color-primary: #00c2ff;
   /* Bright cyan — primary accents/highlights */
-  --color-primary-deep: #0091BF;
+  --color-primary-deep: #a1e3f8;
   /* Deep cyan — buttons, pressed/active states */
   --color-secondary: #D9F4FE;
   /* Ice cyan — light accents, success tints */
   --color-secondary-deep: #A6DEF0;
   /* Powder cyan — borders on light */
 
-  --color-bg: #FBF7F5;
+  --color-bg: #f8f8f8;
   /* Warm cream — page background (kept) */
   --color-bg-deep: #F2E9E6;
   /* recessed layer (kept) */
-  --color-surface: #FFFFFF;
+  --color-surface: #f4f4f4;
   /* raised cards / panels */
   --color-surface-soft: #EEF9FD;
   /* hover / inner chips (cyan-tinted) */
 
-  --color-text: #2B303B;
+  --color-text: #22262f;
   /* slate ink — primary text */
   --color-text-soft: #6A7180;
   /* muted slate text */
