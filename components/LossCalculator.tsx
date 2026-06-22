@@ -14,7 +14,7 @@ export default function LossCalculator() {
   const yearly = monthlyLoss * 12;
 
   return (
-    <section className="py-20 max-md:py-14">
+    <section id="loss-calculator" className="py-20 max-md:py-14">
       <div className="mx-auto max-w-280 px-6">
         <GlowCard customSize glowColor="blue" className="block rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
         <div className="overflow-hidden rounded-[28px] border border-line bg-(--gradient-surface)">

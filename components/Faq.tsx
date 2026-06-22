@@ -13,7 +13,7 @@ const QA = [
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="pb-20 max-md:pb-14">
+    <section id="faq" className="pb-20 max-md:pb-14">
       <div className="mx-auto max-w-190 px-6">
         <SectionHead kicker="قبل از شروع" title="سؤال‌هایی که شاید برایتان پیش بیاید" />
         <div className="grid gap-3">

@@ -10,6 +10,10 @@ function Time({ children }: { children: React.ReactNode }) {
   return <span className="min-w-12 rounded-[10px] bg-primary-soft px-0.5 py-1.5 text-center text-sm font-bold text-primary">{children}</span>;
 }
 
+function InfoBadge() {
+  return <span className="bg-text rounded-full w-4 h-4 flex items-center justify-center shrink-0 font-bold text-bg text-[9px] leading-none pt-px">i</span>;
+}
+
 const slotBase = "mb-3 flex flex-col gap-2.5 rounded-lg bg-bg p-2";
 const badgeBase = "self-start rounded-lg px-3 py-1.25 text-[11.5px] font-bold whitespace-nowrap transition-all duration-300";
 
@@ -74,7 +78,7 @@ export default function AppointmentBook() {
       </div>
 
       <div className="mt-1.5 flex items-center gap-3 rounded-[14px] bg-surface px-4 py-3">
-        <span className="bg-text rounded-full w-4 h-4 flex items-center justify-center shrink-0 font-bold text-bg text-[9px]">!</span>
+        <InfoBadge />
         <span className="text-xs max-w-1/2 text-text-soft">برآورد ضرر همین یک هفته از نوبت‌های نیامده</span>
       </div>
     </div>

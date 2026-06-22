@@ -27,7 +27,7 @@ const ITEMS = [
 ];
 export default function Testimonials() {
   return (
-    <section className="flex flex-col items-center justify-center bg-background p-8">
+    <section id="testimonials" className="flex flex-col items-center justify-center bg-background p-8">
       <SectionHead kicker="از زبان مدیران سالن‌ها" title="چرا دیگران ارزیابی را کامل کردند" />
       <ScrollReelTestimonials testimonials={ITEMS} />
     </section>

@@ -4,7 +4,7 @@ import { SITE, CONTACT, ARCHITECH, FOOTER_LINKS } from "@/lib/config";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-bg text-[13px] text-text-soft">
+    <footer id="footer" className="border-t border-line bg-bg text-[13px] text-text-soft">
       <div className="mx-auto max-w-280 px-6 py-14">
         {/* Top: brand · quick links · contact */}
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">

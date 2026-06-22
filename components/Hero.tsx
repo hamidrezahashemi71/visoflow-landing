@@ -5,7 +5,7 @@ import { faDigits } from "@/lib/format";
 
 export default function Hero() {
   return (
-    <header className="relative overflow-hidden pt-2 py-16">
+    <header id="hero" className="relative overflow-hidden pt-2 py-16">
       <Image
         src="/assets/images/hero-lady-image.png"
         alt=""

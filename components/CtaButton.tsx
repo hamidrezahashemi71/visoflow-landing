@@ -8,13 +8,16 @@ type Props = {
 };
 
 export default function CtaButton({ children, size = "xxl", className = "" }: Props) {
-  const sizeClasses = size === "xxl" ? "px-8 py-4 text-[16.5px]" : "px-6 py-3 text-[15px]";
+  const sizeClasses =
+    size === "xxl"
+      ? "px-8 py-4 text-[16.5px]"
+      : "px-4 py-2.5 text-[14px] sm:px-6 sm:py-3 sm:text-[15px]";
 
   return (
     <a
       href={QUIZ_URL}
       className={`
-        inline-flex items-center justify-center gap-2.5
+        inline-flex shrink-0 items-center justify-center gap-2.5 whitespace-nowrap
         font-bold text-surface
         bg-primary rounded-xl
         shadow-[0_6px_0_0_var(--color-primary-deep)]
