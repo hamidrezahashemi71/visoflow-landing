@@ -163,7 +163,7 @@ function GlowCard<T extends ElementType = 'div'>({
     '--backup-border': 'hsl(0 0% 60% / 0.12)',
     '--size': '200',
     '--outer': '1',
-    '--border-size': 'calc(var(--border, 2) * 1px)',
+    // '--border-size': 'calc(var(--border, 2) * 1px)',
     '--spotlight-size': 'calc(var(--size, 150) * 1px)',
     '--hue': 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
     backgroundImage: `radial-gradient(

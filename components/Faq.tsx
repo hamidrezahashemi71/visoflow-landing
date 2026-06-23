@@ -2,6 +2,8 @@
 import { useState } from "react";
 import SectionHead from "./SectionHead";
 import { GlowCard } from "./ui/spotlight-card";
+import Image from "next/image";
+import { InfoBadge } from "./ui/InfoBadge";
 
 const QA = [
   { q: "واقعاً فقط ۳ دقیقه طول می‌کشد؟", a: "بله. سؤال‌ها کوتاه و گزینه‌ای هستند و برای مدیر یک سالن طراحی شده‌اند، نه برای پر کردن فرم‌های طولانی." },
@@ -13,32 +15,38 @@ const QA = [
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="pb-20 max-md:pb-14">
-      <div className="mx-auto max-w-190 px-6">
-        <SectionHead kicker="قبل از شروع" title="سؤال‌هایی که شاید برایتان پیش بیاید" />
+    <section id="faq" className="flex items-center gap-6 max-md:flex-col py-20 max-md:py-14 px-6">
+      <div className="w-full md:flex-1 md:min-w-0">
+        <SectionHead kicker="" title="سوالات متداول" />
         <div className="grid gap-3">
           {QA.map((item, i) => {
             const active = open === i;
             return (
-              <GlowCard key={item.q} customSize glowColor="blue" className="block p-0 backdrop-blur-none bg-transparent!">
-              <div className="overflow-hidden rounded-2xl bg-surface/60">
-                <button onClick={() => setOpen(active ? null : i)} aria-expanded={active}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right text-[15px] font-bold text-text">
-                  {item.q}
-                  <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-primary transition-transform duration-300 ${active ? "rotate-45" : ""}`}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                  </span>
-                </button>
-                <div className={`grid transition-all duration-300 ${active ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                  <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-[14px] leading-8 text-text-soft">{item.a}</p>
+              <GlowCard key={item.q} glowColor="blue">
+                <div className={`overflow-hidden rounded-xl bg-bg-deep transition-shadow duration-300 ${active ? "shadow-[0_4px_0_0_var(--color-primary)]" : "shadow-none"}`}>
+                  <button onClick={() => setOpen(active ? null : i)} aria-expanded={active}
+                    className={`flex w-full items-center justify-start gap-4 px-5 py-4 text-right text-[15px] font-bold ${active ? "text-primary" : "text-text"}`}>
+                    <InfoBadge size="md" active={active} />
+                    {item.q}
+                  </button>
+                  <div className={`grid transition-all duration-300 ${active ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                    <div className="overflow-hidden">
+                      <p className="px-5 pb-5 text-[14px] leading-8 text-text">{item.a}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
               </GlowCard>
             );
           })}
         </div>
+      </div>
+      <div className="relative w-full md:w-2/5 lg:w-1/3 shrink-0 aspect-3/4 overflow-hidden rounded-2xl">
+        <Image
+          src={"/assets/images/faq.png"}
+          alt="faq-alt"
+          fill
+          className="object-contain"
+        />
       </div>
     </section>
   );

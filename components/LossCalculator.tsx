@@ -5,6 +5,7 @@ import { faDigits, faMoney } from "@/lib/format";
 import CtaButton from "./CtaButton";
 import WheelPicker from "./ui/WheelPicker";
 import { GlowCard } from "./ui/spotlight-card";
+import { InfoBadge } from "./ui/InfoBadge";
 
 const NO_SHOW_RATE = 0.15;
 const WEEKS_PER_MONTH = 4.33;
@@ -58,9 +59,7 @@ export default function LossCalculator() {
             </div>
 
             <div className="mt-7 flex items-start gap-2.5 border-t border-line pt-5">
-              <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-primary pt-px text-[9px] font-bold leading-none text-bg">
-                i
-              </span>
+              <InfoBadge />
               <p className="text-[12px] leading-6 text-text-soft">
                 فرض این محاسبه: حدود {faDigits(15)}٪ نوبت‌ها بدون اطلاع لغو می‌شوند یا
                 مشتری نمی‌آید — رقم واقعیِ شما ممکن است کمتر یا بیشتر باشد. ارزیابی
