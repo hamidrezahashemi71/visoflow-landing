@@ -15,7 +15,7 @@ const QA = [
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="flex items-center gap-6 max-md:flex-col py-20 max-md:py-14 px-6">
+    <section id="faq" className="flex items-center gap-6 max-md:flex-col py-8 max-md:py-14 px-6">
       <div className="w-full md:flex-1 md:min-w-0">
         <SectionHead kicker="" title="سوالات متداول" />
         <div className="grid gap-3">

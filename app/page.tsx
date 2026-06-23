@@ -22,6 +22,7 @@ export default function Home() {
         <Testimonials />
         <Divider flip />
         <Faq />
+        <Divider />
         <FinalCta />
       </main>
       <Footer />
