@@ -16,7 +16,7 @@ const SOURCES: Record<LogoVariant, StaticImageData> = {
 const HEIGHTS: Record<LogoVariant, { default: number; small: number }> = {
   lockup: { default: 120, small: 60 },
   logomark: { default: 32, small: 16 },
-  wordmark: { default: 24, small: 20 },
+  wordmark: { default: 90, small: 20 },
 };
 
 type LogoProps = {

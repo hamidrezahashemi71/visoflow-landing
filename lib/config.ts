@@ -36,8 +36,8 @@ export const CONTACT: {
 
 /** Footer quick links — anchors map to section ids on the landing page. */
 export const FOOTER_LINKS = [
-  { label: "ابعاد ضرر", href: "#calculator" },
-  { label: "داخل گزارش", href: "#report" },
-  { label: "مراحل کار", href: "#how" },
+  { label: "درباره ما", href: "#hero" },
+  { label: "برآورد ضرر", href: "#loss-calculator" },
+  { label: "نظرات", href: "#testimonials" },
   { label: "سؤال‌های متداول", href: "#faq" },
 ] as const;
