@@ -16,7 +16,7 @@ export default function Steps() {
         <div className="grid gap-5 max-md:grid-cols-1 md:grid-cols-3">
           {STEPS.map((s, i) => (
             <Reveal key={s.num} delay={i * 120}>
-              <GlowCard customSize glowColor="blue" className="block h-full bg-surface/60! px-7 py-8 text-center backdrop-blur-none">
+              <GlowCard glowColor="blue" className="block h-full bg-surface/60! px-7 py-8 text-center backdrop-blur-none">
                 <div className="relative z-2 mx-auto mb-4.5 grid h-13.5 w-13.5 place-items-center rounded-full border border-secondary/40 bg-bg-deep text-2xl font-bold text-text-soft">{s.num}</div>
                 <h3 className="mb-1.5 text-[16.5px] font-bold text-text">{s.title}</h3>
                 <p className="text-sm text-text-soft">{s.body}</p>

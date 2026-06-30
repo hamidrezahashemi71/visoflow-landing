@@ -53,7 +53,7 @@ function ActionsSlide() {
     <div className="w-full max-w-sm">
       <div className="mb-4 text-center text-sm font-semibold text-text-soft">سه اقدام عملی — از همین هفته</div>
       {items.map((t, i) => (
-        <GlowCard key={t} customSize glowColor="blue" className="mb-3 flex items-center gap-3 bg-bg-deep/70! px-4 py-3.5 text-sm backdrop-blur-none">
+        <GlowCard key={t} glowColor="blue" className="mb-3 flex items-center gap-3 bg-bg-deep/70! px-4 py-3.5 text-sm backdrop-blur-none">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-(--gradient-primary) text-base font-bold text-text">{["۱","۲","۳"][i]}</span>
           {t}
         </GlowCard>
@@ -98,7 +98,7 @@ export default function ReportCarousel() {
         <SectionHead kicker="در پایان ارزیابی چه می‌گیرید؟" title="نگاهی به داخل گزارش بیندازید"
           lead="گزارش شما همین شکل را دارد — اما با عددهای واقعیِ کسب‌وکار خودتان." />
 
-        <GlowCard customSize glowColor="blue" className="mx-auto block max-w-3xl rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
+        <GlowCard  glowColor="blue" className="mx-auto block max-w-3xl rounded-[28px] p-0 backdrop-blur-none bg-transparent!">
         <div className="relative overflow-hidden rounded-[28px] border border-line bg-surface/60"
           onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
           onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>

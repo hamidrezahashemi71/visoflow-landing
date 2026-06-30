@@ -2,12 +2,18 @@ import Reveal from "./Reveal";
 import { GlowCard } from "./ui/spotlight-card";
 
 const POINTS = [
-  { title: "پاسخ‌های شما محرمانه می‌ماند", body: "نتایج فقط به‌صورت جمعی و بدون نام تحلیل می‌شود.",
-    icon: <><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></> },
-  { title: "بدون نیاز به ثبت‌نام یا شماره تماس", body: "دادن اطلاعات تماس کاملاً اختیاری است — فقط اگر گزارش را خواستید برای‌تان بفرستیم.",
-    icon: <><path d="M18.4 5.6a9 9 0 1 0 0 12.8" /><path d="M21 4v6h-6" /></> },
-  { title: "هیچ تعهد یا فروشی در کار نیست", body: "این مرحله فقط شناخت بازار است؛ اگر علاقه‌مند بودید، در دسترسی زودهنگام به ویزو اولویت می‌گیرید.",
-    icon: <path d="M20 6L9 17l-5-5" /> },
+  {
+    title: "پاسخ‌های شما محرمانه می‌ماند", body: "نتایج فقط به‌صورت جمعی و بدون نام تحلیل می‌شود.",
+    icon: <><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></>
+  },
+  {
+    title: "بدون نیاز به ثبت‌نام یا شماره تماس", body: "دادن اطلاعات تماس کاملاً اختیاری است — فقط اگر گزارش را خواستید برای‌تان بفرستیم.",
+    icon: <><path d="M18.4 5.6a9 9 0 1 0 0 12.8" /><path d="M21 4v6h-6" /></>
+  },
+  {
+    title: "هیچ تعهد یا فروشی در کار نیست", body: "این مرحله فقط شناخت بازار است؛ اگر علاقه‌مند بودید، در دسترسی زودهنگام به ویزو اولویت می‌گیرید.",
+    icon: <path d="M20 6L9 17l-5-5" />
+  },
 ] as const;
 
 export default function Trust() {
@@ -23,7 +29,6 @@ export default function Trust() {
           {POINTS.map((p, i) => (
             <Reveal key={p.title} delay={i * 110}>
               <GlowCard
-                customSize
                 glowColor="blue"
                 className="block h-full bg-surface/60! px-4.5 py-4 text-[14.5px] backdrop-blur-none"
               >
