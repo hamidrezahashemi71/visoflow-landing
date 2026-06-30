@@ -30,7 +30,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-line bg-bg-deep/80 backdrop-blur-md p-2">
+    <nav className="sticky top-0 z-50 border-b border-line bg-bg-deep/95 md:bg-bg-deep/80 md:backdrop-blur-md p-2">
       <div className="mx-auto flex h-17 w-full items-center justify-between px-6">
         <Logo />
         <ul className="hidden md:flex items-center gap-7 list-none m-0 p-0">

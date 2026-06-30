@@ -3,7 +3,7 @@
  * Swap QUIZ_URL for your Porsline / Formaloo / custom quiz link.
  * Append UTM params per acquisition channel when sharing the page.
  */
-export const QUIZ_URL = "#quiz"; // TODO: replace with the real quiz URL
+export const QUIZ_URL = "https://survey.visoflow.ir"
 
 export const SITE = {
   name: "ویزو",

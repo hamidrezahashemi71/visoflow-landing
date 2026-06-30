@@ -29,7 +29,7 @@ export default function StickyCta() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 overflow-hidden border-t border-line bg-bg/90 backdrop-blur-md transition-transform duration-300 ${
+      className={`fixed inset-x-0 bottom-0 z-50 overflow-hidden border-t border-line bg-bg/95 md:bg-bg/90 md:backdrop-blur-md transition-transform duration-300 ${
         shown ? "translate-y-0" : "translate-y-full"
       }`}
     >
